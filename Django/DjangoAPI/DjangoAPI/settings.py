@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders'
+    'corsheaders',
+    'app_backend.apps.AppBackendConfig'  
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True 
@@ -83,7 +84,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'FYPDB',
-        'USER': 'root',
+        'USER': 'postgres',
         'PASSWORD': 'Yojit@17',
         'HOST': 'localhost',
         'PORT': '5432'
