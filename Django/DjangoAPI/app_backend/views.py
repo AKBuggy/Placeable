@@ -9,11 +9,12 @@ from django.core.files.storage import default_storage
 
 # Create your views here.
 @csrf_exempt
-def departmentApi(request,id=0):
-    if request.method=='POST':
-        recuiter_data=JSONParser().parse(request)
-        recuiter_serializer = recruiter_tableSerializer(data=recuiter_data)
-        if recuiter_serializer.is_valid():
-            recuiter_serializer.save()
+def recruiterAPI(request):
+    if request.method == 'POST':
+        recruiter_data=JSONParser().parse(request)
+        recruiter_serializer = recruiter_tableSerializer(data=recruiter_data)
+        if recruiter_serializer.is_valid():
+            recruiter_serializer.save()
             return JsonResponse("Added Successfully!!" , safe=False)
         return JsonResponse("Failed to Add.",safe=False)
+

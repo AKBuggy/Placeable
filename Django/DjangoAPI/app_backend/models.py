@@ -33,7 +33,7 @@ class recuiter_table(models.Model):
     lname = models.CharField(max_length=30)
     company_name = models.CharField(max_length=40)
     phone_no = models.BigIntegerField()
-    email = models.CharField(max_length=30)
+    email = models.CharField(max_length=40)
     password = models.CharField(max_length=30)
     verified = models.BooleanField(default=False)
 
