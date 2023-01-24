@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="login-page.component.css">
+  <title>Document</title>
+  <router-outlet></router-outlet>
+</head>
+<body>
+  <main>
+    <div class="box">
+      <div class="inner-box">
+        <div class="form-wrap">
+          <form action="login-page.component.html" class="login-in-form">
+            <!--Add logo here-->
+            <div class="logo">
+              <img src="./assets/img/placeable.png" alt="">
+              <h3>laceable</h3>
+            </div>
+            <div class="heading">
+              <h2>Welcome Back</h2>
+              <h6>Not registered yet? Sign up as </h6><br>
+              <button class="stud-btn"><a href="student" class="toggle">Student &nbsp;</a></button>
+              <button class="place-btn"><a href="placement" class="toggle">Placement Officer &nbsp;</a></button>
+            </div>
+            <div class="actual-form">
+              <!--Username-->
+              <div class="input-wrap">
+                <input type="email" minlength="4" class="input-field" autocomplete="off" placeholder="Email" required>
+                <label for="email" hidden>Name</label>
+              </div>
+              <!--Password-->
+              <div class="input-wrap">
+                <input type="password" minlength="4" class="input-field" autocomplete="off" placeholder="Password" required>
+                <!--<label>Password</label>-->
+              </div>
+              <!--Radio Button-->
+              <div class="input-wrap">
+                <div class="radio-btn">
+                  <label class="radio-inline1">Student</label>
+                  <input type="radio" class="radio-inp1" name="optradio" checked>
+                  <label class="radio-inline2">Placement Officer</label>
+                  <input type="radio" class="radio-inp2" name="optradio">
+                </div>
+              </div>
+              <!--Submit-->
+              <button type="submit" class="sign-btn">Sign In</button>
+              <!--Forgotten your password text-->
+              <p class="text">
+                Forgotten your password or your login details?
+                <a href="#">Get help</a> signing in
+              </p>
+            </div>
+          </form>
+        </div>
+        <div class="carousel">
+          <div class="images-wrapper">
+            <img src= "./assets/img/A.png" class="image img-1" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
+
+
+
+
+
+

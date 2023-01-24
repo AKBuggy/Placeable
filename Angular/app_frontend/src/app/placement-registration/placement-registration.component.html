@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="placement-registration.component.css">
+  <title>Document</title>
+  <router-outlet></router-outlet>
+</head>
+<body>
+  <main>
+    <div class="box">
+      <div class="inner-box">
+        <div class="form-wrap">
+          <form action="placement-registration.component.html" class="PlacementSign-in-form">
+            <!--Add logo here-->
+            <div class="logo">
+              <img src="./assets/img/placeable.png" alt="">
+              <h3>laceable</h3>
+            </div>
+            <div class="heading">
+              <h2>Getting Started</h2>
+              <h6>Already have an account?</h6>
+              <a href="#" class="toggle">Sign in</a>
+            </div>
+            <div class="actual-form">
+              <!--Username-->
+              <div class="input-wrap">
+                <input type="text" minlength="4" class="input-field" name="fname" autocomplete="off" placeholder="First Name" [(ngModel)] = "fname" required>
+                <label for="First Name" hidden>First Name</label>
+              </div>
+              <!--Last Name-->
+              <div class="input-wrap">
+                <input type="text" minlength="4" class="input-field" name="lname" autocomplete="off" placeholder="Last Name" [(ngModel)] = "lname"required>
+                <label for="Last Name" hidden>Last Name</label>
+              </div>
+              <div class="input-wrap">
+                <input type="text" minlength="4" class="input-field" name="phone_no" autocomplete="off" placeholder="Phone Number" [(ngModel)] = "phone_no" required>
+                <label hidden>Phone Number</label>
+              </div>
+              <div class="input-wrap">
+                <input type="email" minlength="4" class="input-field" name="email" autocomplete="off" placeholder="Email" [(ngModel)] = "email" required>
+                <label hidden>Email</label>
+              </div>
+              <div class="input-wrap">
+                <input type="password" minlength="4" class="input-field" name="password" autocomplete="off" placeholder="Password" [(ngModel)] = "password" required>
+                <label hidden>Password</label>
+              </div>
+              <!--Submit-->
+              <button type="button" class="sign-btn" (click)="onClick()">Sign In</button>
+              <!--Forgotten your password text-->
+              <p class="text">
+                Forgotten your password or your login details?
+                <a href="#">Get help</a> signing in
+              </p>
+            </div>
+          </form>
+        </div>
+        <div class="carousel">
+          <img src= "./assets/img/B.png" class="image img-1" alt="">
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
+
+
+
+
+
+
+
+
