@@ -84,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'FYPDB',
         'USER': 'postgres',
-        'PASSWORD': 'Yojit@17',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '5432'
     }

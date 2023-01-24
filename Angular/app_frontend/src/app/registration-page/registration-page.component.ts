@@ -28,18 +28,18 @@ export class RegistrationPageComponent implements OnInit{
     // this.password = this.Recruiter.password
   }
 
-  addClick(){
-    var val = {
-      fname:this.fname,
-      lname:this.lname,
-      company_name:this.company_name,
-      phone_no:this.phone_no,
-      email:this.email,
-      password:this.password
-    };
-    console.log(val)
-    this.service.addRecruiter(val).subscribe(res=>{
-      alert(res.toString());
-    });
-  }
+  // addClick(){
+  //   var val = {
+  //     fname:this.fname,
+  //     lname:this.lname,
+  //     company_name:this.company_name,
+  //     phone_no:this.phone_no,
+  //     email:this.email,
+  //     password:this.password
+  //   };
+  //   console.log(val)
+  //   this.service.addRecruiter(val).subscribe(res=>{
+  //     alert(res.toString());
+  //   });
+  // }
 }

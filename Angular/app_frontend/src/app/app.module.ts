@@ -8,11 +8,17 @@ import { SharedService } from './shared.service';
 
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StudentRegistrationComponent } from './student-registration/student-registration.component';
+import { login } from './login-page/login-page.component';
+import { PlacementRegistrationComponent } from './placement-registration/placement-registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationPageComponent
+    RegistrationPageComponent,
+    StudentRegistrationComponent,
+    login,
+    PlacementRegistrationComponent
   ],
   imports: [
     BrowserModule,
