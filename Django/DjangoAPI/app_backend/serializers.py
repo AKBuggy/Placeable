@@ -6,11 +6,6 @@ class student_tableSerializer(serializers.ModelSerializer):
         model = student_table
         fields = ('fname',
                   'lname',
-                  'institute_name',
-                  'institute_code',
-                  'student_uid',
-                  'degree',
-                  'specialization',
                   'phone_no',
                   'email',
                   'password',
@@ -21,8 +16,6 @@ class placement_officer_tableSerializer(serializers.ModelSerializer):
         model = placement_officer_table
         fields = ('fname',
                   'lname',
-                  'institute_name',
-                  'institute_code',
                   'phone_no',
                   'email',
                   'password',

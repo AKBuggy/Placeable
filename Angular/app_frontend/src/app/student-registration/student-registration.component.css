@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+
+*, *::before, *::after{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body, input{
+  font-family: "Poppins", sans-serif;
+}
+
+main{
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #192837;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box{
+  position: relative;
+  width: 100%;
+  max-width: 1020px;
+  height: 640px;
+  background-color: #fff;
+  border-radius: 3.3rem;
+  box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
+}
+
+.inner-box{
+  position: absolute;
+  width: calc(100% - 4.1rem);
+  height: calc(100% - 4.1rem);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form-wrap{
+  position: absolute;
+  height: 100%;
+  width: 45%;
+  top: 0;
+  left: 55%;
+}
+
+.carousel{
+  position: absolute;
+  height: 100%;
+  width: 55%;
+  left: 0%;
+  top: 0;
+  background-color: #192837;
+  border-radius: 2rem;
+}
+
+form{
+  max-width: 260px;
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+}
+.logo img{
+  width: 27px;
+  margin: 0.1rem;
+}
+.logo h3{
+  font-weight: 600;
+}
+
+
+.heading h2{
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: #151111; 
+}
+
+.heading h6{
+    color: #bababa;
+    font-weight: 400;
+    font-size: .75rem;
+    display: inline;
+  }
+
+.toggle{
+  color: #151111;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 550;
+  transition: 0.3s;
+}
+
+.toggle:hover{
+  color: #8371fd;
+}
+
+.input-wrap{
+  position: relative;
+  height: 20px;
+  margin-bottom: 2rem;
+}
+
+.input-field{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #bbb;
+  padding: 0;
+  font-size: 0.95rem;
+  color: #151111;
+  transition: 0.4s;
+}
+
+label{
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  color: #bbb;
+  pointer-events: none;
+  transition: 0.4s;
+}
+
+.sign-btn{
+  display: inline-block;
+  width: 100%;
+  height: 43px;
+  background-color: #151111;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.8rem;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+  transition: 0.3s;
+}
+.sign-btn:hover{
+  background-color: #8371fd;
+}
+
+.text{
+  color: #bbb;
+  font-size: 0.7rem;
+}
+.text a{
+  color: #bbb;
+}
+.text a:hover{
+  color: #8371fd;
+}
+.image-wrapper{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+.image{
+  width: 100%;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  opacity: 1;
+}
+.image.show{
+  opacity: 1;
+}

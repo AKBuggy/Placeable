@@ -5,5 +5,5 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns=[
-    path('recruiter/',views.recruiterAPI)
+    path('student/',views.studentAPI)
 ] 
