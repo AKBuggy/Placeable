@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { SharedService } from './shared.service';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -16,7 +15,6 @@ import { PlacementRegistrationComponent } from './placement-registration/placeme
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationPageComponent,
     RegHomeComponent,
     StudentRegistrationComponent,
     login,
