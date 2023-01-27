@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Roboto:ital,wght@1,300&display=swap');
+
+.sign_in{
+    /* position: absolute;
+    right: 0;
+    top: 260;
+    width: 150px; */
+    color: rgb(66, 122, 217);
+    font-size: 150%;
+}
+
+.sign_in:hover{
+    color: #ED3F3F;
+}
+
+.about_us_title{
+    text-align: center;
+}
+
+.about_us{
+    margin: 20px 20px 0 0;  
+    overflow: auto
+}
+.venn{
+    float: left
+}
+.venn img{
+    display: block
+}
+.a_content{
+    margin-left: 210px
+}
+.about_us_para{
+    font-family: 'DM Sans', sans-serif;
+}
+.header{
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 100vh;
+    color: #ED3F3F;
+}

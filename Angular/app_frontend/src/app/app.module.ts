@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { SharedService } from './shared.service';
 
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegHomeComponent } from './reg-home/reg-home.component';
 import { StudentRegistrationComponent } from './student-registration/student-registration.component';
 import { login } from './login-page/login-page.component';
 import { PlacementRegistrationComponent } from './placement-registration/placement-registration.component';
@@ -16,6 +17,7 @@ import { PlacementRegistrationComponent } from './placement-registration/placeme
   declarations: [
     AppComponent,
     RegistrationPageComponent,
+    RegHomeComponent,
     StudentRegistrationComponent,
     login,
     PlacementRegistrationComponent
