@@ -9,5 +9,5 @@ urlpatterns=[
     path('placement/', views.poAPI),
     path('login/', views.loginPage),
     path('JobPost/',views.jobPostAPI),
-    path('GetJobPosts/',views.viewAllJobPostsAPI)
+    path('GetJobPosts/',views.viewAllJobPostsAPI),
 ] 
