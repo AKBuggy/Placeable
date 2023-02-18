@@ -10,6 +10,7 @@ from rest_framework.views import APIView
 from django.contrib.auth.hashers import check_password
 
 
+
 from app_backend.models import student_table,placement_officer_table,recuiter_table, jobpost_table
 from app_backend.serializers import student_tableSerializer, placement_officer_tableSerializer, recruiter_tableSerializer, jobpost_tableSerializer
 
