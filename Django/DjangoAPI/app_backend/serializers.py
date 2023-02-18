@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from .models import student_table, recuiter_table, placement_officer_table
-from app_backend.models import student_table, placement_officer_table, recuiter_table
+from app_backend.models import student_table, placement_officer_table, recuiter_table, jobpost_table
 
 class student_tableSerializer(serializers.ModelSerializer):
     class Meta:
@@ -32,3 +31,11 @@ class recruiter_tableSerializer(serializers.ModelSerializer):
                   'email',
                   'password',
                   'verified')
+                  
+class jobpost_tableSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = jobpost_table
+        fields = ('company_name',
+                  'recruiter_name',
+                  'job_position',
+                  'job_description')

@@ -5,16 +5,12 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 from rest_framework.exceptions import AuthenticationFailed
-from .models import student_table, recuiter_table, placement_officer_table
-from .serializers import student_tableSerializer, recruiter_tableSerializer, placement_officer_table
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth.hashers import check_password
 
-
-from app_backend.models import student_table,placement_officer_table,recuiter_table
-
-from app_backend.serializers import student_tableSerializer, placement_officer_tableSerializer, recruiter_tableSerializer
+from app_backend.models import student_table,placement_officer_table,recuiter_table, jobpost_table
+from app_backend.serializers import student_tableSerializer, placement_officer_tableSerializer, recruiter_tableSerializer, jobpost_tableSerializer
 from django.core.files.storage import default_storage
 
 # Create your views here.
@@ -28,7 +24,6 @@ def studentAPI(request):
             student_serializer.save()
             return JsonResponse("Added Successfully!!" , safe=False)
         return JsonResponse("Failed to Add.",safe=False)
-
 
 @csrf_exempt
 def poAPI(request):
@@ -107,7 +102,20 @@ def loginPage(request):
                 return JsonResponse("What re bro PO", safe=False)
         else:
             return JsonResponse("Please enter all values", safe=False)
-
-
-    
         
+@csrf_exempt
+def jobPostAPI(request):
+    if request.method == 'POST':
+        job_post_data=JSONParser().parse(request)
+        job_post_serializer = jobpost_tableSerializer(data=job_post_data)
+        if job_post_serializer.is_valid():
+            job_post_serializer.save()
+            return JsonResponse("Uploaded Successfully!!" , safe=False)
+        return JsonResponse("Failed to Upload.",safe=False)
+
+@csrf_exempt
+def viewAllJobPostsAPI(request):
+    if request.method == 'GET':
+        JobPosts = jobpost_table.objects.all()
+        job_post_serializer = jobpost_tableSerializer(JobPosts, many=True)
+        return JsonResponse(job_post_serializer.data, safe=False)

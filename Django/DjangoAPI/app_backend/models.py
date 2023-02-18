@@ -30,5 +30,9 @@ class recuiter_table(models.Model):
     password = models.CharField(max_length=30)
     verified = models.BooleanField(default=False)
 
-
-
+# Model for Job-Post Table
+class jobpost_table(models.Model):
+    company_name = models.CharField(max_length=40)
+    recruiter_name = models.CharField(max_length=40)
+    job_position = models.CharField(max_length=30)
+    job_description = models.TextField()
