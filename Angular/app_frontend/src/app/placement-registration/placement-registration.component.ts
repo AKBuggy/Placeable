@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SharedService } from '../shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-placement-registration',
@@ -9,7 +10,9 @@ import { SharedService } from '../shared.service';
 export class PlacementRegistrationComponent {
 
   
-  constructor(private service:SharedService) {}
+  constructor(private service:SharedService, private router: Router) {}
+
+  response: any = "";
 
   @Input() Student:any;
   fname: string = "";
@@ -37,8 +40,14 @@ export class PlacementRegistrationComponent {
       password:this.password
     };
     console.log(val)
-    this.service.addStudent(val).subscribe(res=>{
-      alert(res.toString());
+    this.service.addRecruiter(val).subscribe(res=>{
+      this.response = res;
+      console.log(this.response)
+      if(this.response === "Added Placement Officer Successfully!!"){
+        this.router.navigate(['/login']);
+      } else{
+        alert(res.toString());
+      }   
     });
   }
 

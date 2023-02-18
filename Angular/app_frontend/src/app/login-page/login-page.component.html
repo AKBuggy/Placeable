@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="login-page.component.css">
-  <title>Document</title>
+  <title>Login Page</title>
   <router-outlet></router-outlet>
 </head>
 <body>
@@ -28,25 +28,28 @@
             <div class="actual-form">
               <!--Username-->
               <div class="input-wrap">
-                <input type="email" minlength="4" class="input-field" autocomplete="off" placeholder="Email" required>
+                <input type="email" minlength="4" name="email" class="input-field" autocomplete="off" placeholder="Email" [(ngModel)] = "email" required>
                 <label for="email" hidden>Name</label>
               </div>
               <!--Password-->
               <div class="input-wrap">
-                <input type="password" minlength="4" class="input-field" autocomplete="off" placeholder="Password" required>
+                <input type="password" minlength="4" name="password" class="input-field" autocomplete="off" placeholder="Password" [(ngModel)] = "password" required>
                 <!--<label>Password</label>-->
               </div>
               <!--Radio Button-->
               <div class="input-wrap">
-                <div class="radio-btn">
-                  <label class="radio-inline1">Student</label>
-                  <input type="radio" class="radio-inp1" name="optradio" checked>
-                  <label class="radio-inline2">Placement Officer</label>
-                  <input type="radio" class="radio-inp2" name="optradio">
+                <div class="radio-btn" name="radio-btn">
+                    <label class="radio-inline1">Student</label>
+                    <input type="radio" class="radio-inp1" name="Student" value="Student" [(ngModel)] = "optradio">
+                    <label class="radio-inline2">PO</label>
+                    <input type="radio" class="radio-inp2" name="PO" value="PO" [(ngModel)] = "optradio">
+                    <label class="radio-inline3">Recruiter</label>
+                    <input type="radio" class="radio-inp3" name="Recruiter" value="Recruiter" [(ngModel)] = "optradio">
                 </div>
               </div>
+              
               <!--Submit-->
-              <button type="submit" class="sign-btn">Sign In</button>
+              <button type="submit" class="sign-btn" (click)="onClick()">Sign In</button>
               <!--Forgotten your password text-->
               <p class="text">
                 Forgotten your password or your login details?

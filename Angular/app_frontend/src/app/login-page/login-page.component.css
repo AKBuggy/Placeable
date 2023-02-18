@@ -148,23 +148,31 @@ form{
 }
 .radio-inline1{
   position: relative;
+  justify-content: left;
   left: 10%;
-  transform: translate(50%, 15%); 
 }
 .radio-inline2{
   position: relative;
-  left: 20%;
-  transform: translate(50%, 15%); 
+  left: 22%;
+}
+.radio-inline3{
+  position: relative;
+  left: 35%;
 }
 .radio-inp1{
   position: relative;
-  left: -15%;
-  transform: translate(-50%, 15%);
+  left: -12%;
+  transform: translate(-100%, 15%);
 }
 .radio-inp2{
   position: relative;
-  left: -30%;
-  transform: translate(-100%, 15%);
+  left: 4%;
+  transform: translate(50%, 15%);
+}
+.radio-inp3{
+  position: relative;
+  left: 0%;
+  transform: translate(100%, 15%);
 }
 
 .input-wrap{

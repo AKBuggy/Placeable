@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from .models import student_table, recuiter_table, placement_officer_table
 from app_backend.models import student_table, placement_officer_table, recuiter_table
 
 class student_tableSerializer(serializers.ModelSerializer):
@@ -10,7 +11,7 @@ class student_tableSerializer(serializers.ModelSerializer):
                   'email',
                   'password',
                   'verified')
-
+        
 class placement_officer_tableSerializer(serializers.ModelSerializer):
     class Meta:
         model = placement_officer_table

@@ -7,7 +7,7 @@ class student_table(models.Model):
     fname = models.CharField(max_length=30)
     lname = models.CharField(max_length=30)
     phone_no = models.BigIntegerField()
-    email = models.CharField(max_length=30)
+    email = models.CharField(max_length=30, primary_key=True)
     password = models.CharField(max_length=30)
     verified = models.BooleanField(default=False)
 
@@ -16,7 +16,7 @@ class placement_officer_table(models.Model):
     fname = models.CharField(max_length=30)
     lname = models.CharField(max_length=30)
     phone_no = models.BigIntegerField()
-    email = models.CharField(max_length=30)
+    email = models.CharField(max_length=30, primary_key=True)
     password = models.CharField(max_length=30)
     verified = models.BooleanField(default=False)
     
@@ -26,7 +26,7 @@ class recuiter_table(models.Model):
     lname = models.CharField(max_length=30)
     company_name = models.CharField(max_length=40)
     phone_no = models.BigIntegerField()
-    email = models.CharField(max_length=40)
+    email = models.CharField(max_length=40, primary_key=True)
     password = models.CharField(max_length=30)
     verified = models.BooleanField(default=False)
 
