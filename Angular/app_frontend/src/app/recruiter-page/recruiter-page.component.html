@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="studentHome" style="font-size: 30px;">Placeable</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="font-size: 20px;">My Posts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="font-size: 20px;">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container my-5">
+        <div class="card">
+          <form>
+            <!-- Card header -->
+            <div class="card-header py-4 px-5 bg-light border-0">
+              <h4 class="mb-0 fw-bold">Create Job Post</h4>
+            </div>
+      
+            <!-- Card body -->
+            <div class="card-body px-5">
+              <!-- Account section -->
+              <div class="row gx-xl-5">
+                <!-- <div class="col-md-4">
+                  <h5>Account</h5>
+                  <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam et ducimus velit, facere quaerat debitis modi asperiores aspernatur corrupti, sit aliquam.</p>
+                </div> -->
+      
+                <div class="col-md-8">
+                  <div class="mb-3">
+                    <label for="exampleInput1" class="form-label">Company Name</label>
+                    <input type="text" class="form-control" name="company_name" id="company_name" style="max-width: 400px;" [(ngModel)] = "company_name" required/>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInput2" class="form-label">Recruiter's Name</label>
+                    <input type="email" class="form-control" name="recruiter_name" id="recruiter_name" style="max-width: 400px;" [(ngModel)] = "recruiter_name" required/>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInput3" class="form-label">Job Position</label>
+                    <input type="tel" class="form-control" name="job_position" id="job_position" style="max-width: 400px;" [(ngModel)] = "job_position" required/>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInput4" class="form-label">Job Discription</label>
+                    <angular-editor name="job_description" id="job_description" [(ngModel)]="job_description" [config]="config"></angular-editor>
+                  </div>
+                </div>
+              </div>
+            </div>
+      
+            <!-- Card footer -->
+            <div class="card-footer text-end py-4 px-5 bg-light border-0">
+              <button type="submit" class="btn btn-dark btn-rounded" (click)="onClick()">
+                Upload
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
