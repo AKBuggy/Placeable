@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="studentHome" style="font-size: 30px;">Placeable</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav ml-auto">
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#" style="font-size: 20px;">Profile</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="font-size: 20px;">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="outerContainer p-5 mx-5">
+
+    <div class="form-outline mb-4 mx-5">
+        <input type="search" class="form-control" id="datatable-search-input" placeholder="Search">
+        <label class="form-label" for="datatable-search-input" hidden>Search</label>
+      </div>
+      <div id="datatable">
+      </div>
+    <div class="formContainer mx-5">
+        <table class="table table-striped">
+            <thead>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Password</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let studentItem of StudentList">
+                    <td>{{studentItem.fname}}</td>
+                    <td>{{studentItem.lname}}</td>
+                    <td>{{studentItem.phone_no}}</td>
+                    <td>{{studentItem.email}}</td>
+                    <td>{{studentItem.password}}</td>
+                    <td>
+                        <button type="button" class="btn btn-light mr-1" (click)="deleteClick(studentItem)">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                          </svg>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>   
+  </div>
+
+
+ 
+ 

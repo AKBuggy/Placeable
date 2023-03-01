@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center p-5">
+    <form>
+      <div class="row ">
+        <div class="col">
+          <label for="fname" class="form-label">First Name</label>
+          <input type="text" class="form-control" placeholder="First name" aria-label="First name" name = "fname" [(ngModel)] = "fname">
+        </div>
+        <div class="col">
+          <label for="lname" class="form-label">Last Name</label>
+          <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" name = "lname" [(ngModel)] = "lname">
+        </div>
+      </div>
+      <div class="mb-3 pt-3">
+        <label for="company_name" class="form-label">Company Name</label>
+        <input type="text" class="form-control" id="company_name" name = "company_name" [(ngModel)] = "company_name">
+      </div>
+      <div class="mb-3">
+        <label for="phone_no" class="form-label">HR Phone Number</label>
+        <input type="text" class="form-control" id="phone_no" name="phone_no" [(ngModel)] = "phone_no">
+      </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" [(ngModel)] = "email">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password" [(ngModel)] = "password">
+    </div> 
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-dark" (click)="addRecruiter()" *ngIf="rec.recruiter_id==0">Add</button>
+    <button type="submit" class="btn btn-dark" (click)="updateRecruiter()" *ngIf="rec.recruiter_id!=0">Update</button>
+  </form>
+  </div>
