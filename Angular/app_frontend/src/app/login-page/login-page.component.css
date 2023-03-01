@@ -162,17 +162,17 @@ form{
 .radio-inp1{
   position: relative;
   left: -12%;
-  transform: translate(-100%, 15%);
+  transform: translate(-100%, -75%);
 }
 .radio-inp2{
   position: relative;
   left: 4%;
-  transform: translate(50%, 15%);
+  transform: translate(50%, -75%);
 }
 .radio-inp3{
   position: relative;
   left: 0%;
-  transform: translate(100%, 15%);
+  transform: translate(100%, -75%);
 }
 
 .input-wrap{
@@ -250,3 +250,117 @@ label{
 .image.show{
   opacity: 1;
 }
+
+
+@media (max-width: 850px) {
+  .box {
+    height: 700px;
+    max-width: 700px;
+    overflow: hidden;
+  }
+  .inner-box {
+    position: relative;
+    transform: translate(-22%, -10%);
+    width: 170%;
+    height: revert;
+    padding: 2rem;
+  }
+ 
+ .carousel{
+  display: none;
+ }
+  .images-wrapper {
+    display: none;
+  }
+  .image{
+    display: none;
+  }
+
+}
+
+@media (max-width: 550px) {
+  main {
+    padding: 1rem;
+  }
+  .box {
+    height: 800px;
+    max-width: 450px;
+    overflow: hidden;
+  }
+  .inner-box {
+    position: relative;
+    transform: translate(-22%, -10%);
+    width: 170%;
+    height: revert;
+    padding: 2rem;
+  }
+ 
+ .carousel{
+  display: none;
+ }
+  .images-wrapper {
+    display: none;
+  }
+  .image{
+    display: none;
+  }
+
+}
+
+@media (max-width: 324px) {
+  main {
+    padding: 1rem;
+  }
+  .box {
+    height: 800px;
+    max-width: 450px;
+    overflow: hidden;
+  }
+  .inner-box {
+    position: relative;
+    transform: translate(-24%, -10%);
+    width: 190%;
+    height: revert;
+    padding: 2rem;
+  }
+  .radio-inline1{
+    position: relative;
+    justify-content: left;
+    left: 10%;
+  }
+  .radio-inline2{
+    position: relative;
+    left: 18%;
+  }
+  .radio-inline3{
+    position: relative;
+    left: 30%;
+  }
+  .radio-inp1{
+    position: relative;
+    left: -12%;
+    transform: translate(-170%, -75%);
+  }
+  .radio-inp2{
+    position: relative;
+    left: 4%;
+    transform: translate(-50%, -75%);
+  }
+  .radio-inp3{
+    position: relative;
+    left: 0%;
+    transform: translate(-100%, -75%);
+  }
+ .carousel{
+  display: none;
+ }
+  .images-wrapper {
+    display: none;
+  }
+  .image{
+    display: none;
+  }
+
+}
+
+  

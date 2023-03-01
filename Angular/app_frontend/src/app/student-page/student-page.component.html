@@ -28,28 +28,40 @@
         </div>
       </nav>
 
-      <div class="container my-5" [hidden]="TableSection">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Company</th>
-              <th>Job Position</th>
-              <th>Recruiter</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let JobPost of JobPosts">
-              <td>{{JobPost.company_name}}</td>
-              <td>{{JobPost.job_position}}</td>
-              <td>{{JobPost.recruiter_name}}</td>
-              <td>
-                <button type="button" class="btn btn-dark mr-1" (click)="viewClick(JobPost)">View</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      
+      <div class="container py-5">
+        <div class="form-outline mb-4 mx-3">
+          <input type="search" class="form-control" id="datatable-search-input" placeholder="Search">
+          <label class="form-label" for="datatable-search-input" hidden>Search</label>
+        </div>
+        <div id="datatable">
+        </div>
+
+        <div class="container my-5" [hidden]="TableSection">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Job Position</th>
+                <th>Recruiter</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let JobPost of JobPosts">
+                <td>{{JobPost.company_name}}</td>
+                <td>{{JobPost.job_position}}</td>
+                <td>{{JobPost.recruiter_name}}</td>
+                <td>
+                  <button type="button" class="btn btn-dark mr-1" (click)="viewClick(JobPost)">View</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
+      
+      
 
       <div class="container my-5" [hidden]="JobPostSection">
 
@@ -69,9 +81,8 @@
           <div class="card-footer text-end py-4 px-5 bg-light border-0">
             <button type="button" class="btn btn-dark mr-1" (click)="backClick()">Back</button>
           </div>
-
+          <router-outlet></router-outlet>
       </div>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -7,6 +7,7 @@ import { StudentPageComponent } from './student-page/student-page.component';
 import { StudentRegistrationComponent } from './student-registration/student-registration.component';
 import { PlacementofficerPageComponent } from './placementofficer-page/placementofficer-page.component';
 import { RecruiterPageComponent } from './recruiter-page/recruiter-page.component';
+import { ShowStudentsComponent } from './student-page/show-students/show-students.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'login', component: login},
   { path: 'placement', component: PlacementRegistrationComponent},
   { path: 'studentHome', component: StudentPageComponent},
+  { path: 'studentHome/details', component: ShowStudentsComponent},
   { path: 'placementOfficerHome', component: PlacementofficerPageComponent},
   { path: 'recruiterHome', component: RecruiterPageComponent}
 ];

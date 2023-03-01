@@ -1,23 +1,15 @@
-
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
-from rest_framework.exceptions import AuthenticationFailed
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from django.contrib.auth.hashers import check_password
 
 from app_backend.models import student_table,placement_officer_table,recuiter_table, jobpost_table
 from app_backend.serializers import student_tableSerializer, placement_officer_tableSerializer, recruiter_tableSerializer, jobpost_tableSerializer
 
-from django.core.files.storage import default_storage
 
 # Create your views here.
-
 @csrf_exempt
-def studentAPI(request):
+def studentAPI(request, id=0):
     if request.method == 'POST':
         student_data=JSONParser().parse(request)
         student_serializer = student_tableSerializer(data=student_data)
@@ -25,6 +17,18 @@ def studentAPI(request):
             student_serializer.save()
             return JsonResponse("Added Successfully!!" , safe=False)
         return JsonResponse("Failed to Add.",safe=False)
+    
+    elif request.method=='GET':
+        student = student_table.objects.all()
+        students_serializer = student_tableSerializer(student, many=True)
+        return JsonResponse(students_serializer.data, safe=False)
+    
+    elif request.method=='DELETE':
+        id = student_table.objects.values_list('student_id', flat=True)
+        student=student_table.objects.get(student_id=id[0])
+        # student=student_table.objects.get(student_id=id)
+        student.delete()
+        return JsonResponse("Deleted Succeffully!!", safe=False)
 
 @csrf_exempt
 def poAPI(request):
@@ -52,55 +56,37 @@ def loginPage(request):
                 # raise AuthenticationFailed('User not found')
                 return JsonResponse("Student User not found", safe=False)
             
-            for p in student_table.objects.raw('SELECT email, password FROM app_backend_student_table WHERE email=%s', [email]):
+            for p in student_table.objects.raw('SELECT student_id, email, password FROM app_backend_student_table WHERE email=%s', [email]):
                 dbPass = p.password
-                print("i am not dbPass", type(p.password))
-                print("i am dbPass", dbPass)
             strP = str(dbPass)
-            print(strP)
-            print(passw)
             if(passw == strP):
-                return JsonResponse("Less go", safe=False)
-                # return redirect('homepage')
-                # return
+                return JsonResponse("Student", safe=False)
             else:
-                return JsonResponse("What re bro Student", safe=False)
+                return JsonResponse("Please Enter Correct Password(Student)", safe=False)
         elif optradio == "Recruiter":
             user = recuiter_table.objects.filter(email=email).first()
             if user is None:
                 # raise AuthenticationFailed('User not found')
                 return JsonResponse("Recruiter User not found", safe=False)
-            for p in recuiter_table.objects.raw('SELECT email, password FROM app_backend_recuiter_table WHERE email=%s', [email]):
+            for p in recuiter_table.objects.raw('SELECT recruiter_id, email, password FROM app_backend_recuiter_table WHERE email=%s', [email]):
                 dbPass = p.password
-                print("i am not dbPass", type(p.password))
-                print("i am dbPass", dbPass)
             strP = str(dbPass)
-            print(strP)
-            print(passw)
             if(passw == strP):
-                return JsonResponse("Less go", safe=False)
-                # return redirect('homepage')
-                # return
+                return JsonResponse("Recruiter", safe=False)
             else:
-                return JsonResponse("What re bro Recruiter", safe=False)
+                return JsonResponse("Please Enter Correct Password(Recruiter)", safe=False)
         elif optradio == "PO":
             user = placement_officer_table.objects.filter(email=email).first()
             if user is None:
                 # raise AuthenticationFailed('User not found')
                 return JsonResponse("PO User not found", safe=False)
-            for p in placement_officer_table.objects.raw('SELECT email, password FROM app_backend_placement_officer_table WHERE email=%s', [email]):
+            for p in placement_officer_table.objects.raw('SELECT po_id, email, password FROM app_backend_placement_officer_table WHERE email=%s', [email]):
                 dbPass = p.password
-                print("i am not dbPass", type(p.password))
-                print("i am dbPass", dbPass)
             strP = str(dbPass)
-            print(strP)
-            print(passw)
             if(passw == strP):
-                return JsonResponse("Less go", safe=False)
-                # return redirect('homepage')
-                # return
+                return JsonResponse("PO", safe=False)
             else:
-                return JsonResponse("What re bro PO", safe=False)
+                return JsonResponse("Please Enter Correct Password(PO)", safe=False)
         else:
             return JsonResponse("Please enter all values", safe=False)
         
@@ -117,6 +103,39 @@ def jobPostAPI(request):
 @csrf_exempt
 def viewAllJobPostsAPI(request):
     if request.method == 'GET':
-        JobPosts = jobpost_table.objects.all()
-        job_post_serializer = jobpost_tableSerializer(JobPosts, many=True)
+        jobPost = jobpost_table.objects.raw('SELECT * FROM app_backend_jobpost_table ORDER BY jobpost_id DESC')
+        job_post_serializer = jobpost_tableSerializer(jobPost, many=True)
         return JsonResponse(job_post_serializer.data, safe=False)
+
+
+@csrf_exempt
+def recruiterAPI(request, id=0):
+    if request.method=='GET':
+        recruiters = recuiter_table.objects.all()
+        recruiters_serializer = recruiter_tableSerializer(recruiters, many=True)
+        return JsonResponse(recruiters_serializer.data, safe=False)
+
+    elif request.method=='POST':
+        recruiter_data=JSONParser().parse(request)
+        print(recruiter_data)
+        recruiter_serializer = recruiter_tableSerializer(data=recruiter_data)
+        if recruiter_serializer.is_valid():
+            recruiter_serializer.save()
+            return JsonResponse("Added Successfully!!" , safe=False)
+        return JsonResponse("Failed to Add.",safe=False)
+    
+    elif request.method=='PUT':
+        recruiter_data = JSONParser().parse(request)
+        recruiter = recuiter_table.objects.get(recruiter_id=recruiter_data['recruiter_id'])
+        recruiter_serializer=recruiter_tableSerializer(recruiter, data=recruiter_data)
+        print(recruiter_serializer)
+        if recruiter_serializer.is_valid():
+            recruiter_serializer.save()
+            return JsonResponse("Updated Successfully!!", safe=False)
+        return JsonResponse("Failed to Update.", safe=False)
+
+    elif request.method=='DELETE':
+        id = recuiter_table.objects.values_list('recruiter_id', flat=True)
+        recruiter=recuiter_table.objects.get(recruiter_id=id[0])
+        recruiter.delete()
+        return JsonResponse("Deleted Succeffully!!", safe=False)

@@ -15,9 +15,14 @@ import { StudentPageComponent } from './student-page/student-page.component';
 import { PlacementofficerPageComponent } from './placementofficer-page/placementofficer-page.component';
 import { RecruiterPageComponent } from './recruiter-page/recruiter-page.component';
 import { TextareaAutoresizeDirective } from './textarea-autoresize.directive';
-import { AngularEditorModule} from '@kolkov/angular-editor'
+import { AngularEditorModule} from '@kolkov/angular-editor';
+import { ShowRecruitersComponent } from './placementofficer-page/show-recruiters/show-recruiters.component';
+import { AddEditRecruiterComponent } from './placementofficer-page/add-edit-recruiter/add-edit-recruiter.component';
+import { ShowStudentsComponent } from './student-page/show-students/show-students.component';
+import { DeleteStudentsComponent } from './student-page/delete-students/delete-students.component';
 
 @NgModule({
+  
   declarations: [
     AppComponent,
     RegHomeComponent,
@@ -28,6 +33,11 @@ import { AngularEditorModule} from '@kolkov/angular-editor'
     PlacementofficerPageComponent,
     RecruiterPageComponent,
     TextareaAutoresizeDirective,
+    ShowRecruitersComponent,
+    AddEditRecruiterComponent,
+    ShowStudentsComponent,
+    DeleteStudentsComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -35,11 +45,12 @@ import { AngularEditorModule} from '@kolkov/angular-editor'
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularEditorModule,
   ],
   providers: [
-    SharedService,
-    AngularEditorModule
+    SharedService
   ],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

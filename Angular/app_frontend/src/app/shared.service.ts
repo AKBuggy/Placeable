@@ -28,5 +28,22 @@ readonly APIUrl = "http://127.0.0.1:8000";
   getJobPosts():Observable<any[]>{
     return this.http.get<any>(this.APIUrl + '/GetJobPosts/');
   }
-
+  addRecruiterDetails(val:any){
+    return this.http.post(this.APIUrl + '/placementOfficerHome/', val);
+  }
+  getRecruitersList():Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl + '/placementOfficerHome/')
+  }
+  updateRecruiter(val:any){
+    return this.http.put(this.APIUrl + '/placementOfficerHome/',val);
+  }
+  deleteRecruiter(val:any){
+    return this.http.delete(this.APIUrl + '/placementOfficerHome/',val);
+  }
+  getStudentsList():Observable<any[]>{
+    return this.http.get<any>(this.APIUrl + '/studentHome/details');
+  }
+  deleteStudent(val:any){
+    return this.http.delete(this.APIUrl + '/studentHome/details',val);
+  }
 }

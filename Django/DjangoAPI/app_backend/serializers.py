@@ -4,7 +4,8 @@ from app_backend.models import student_table, placement_officer_table, recuiter_
 class student_tableSerializer(serializers.ModelSerializer):
     class Meta:
         model = student_table
-        fields = ('fname',
+        fields = ('student_id',
+                  'fname',
                   'lname',
                   'phone_no',
                   'email',
@@ -14,7 +15,8 @@ class student_tableSerializer(serializers.ModelSerializer):
 class placement_officer_tableSerializer(serializers.ModelSerializer):
     class Meta:
         model = placement_officer_table
-        fields = ('fname',
+        fields = ('po_id',
+                  'fname',
                   'lname',
                   'phone_no',
                   'email',
@@ -24,7 +26,8 @@ class placement_officer_tableSerializer(serializers.ModelSerializer):
 class recruiter_tableSerializer(serializers.ModelSerializer):
     class Meta:
         model = recuiter_table
-        fields = ('fname',
+        fields = ('recruiter_id',
+                  'fname',
                   'lname',
                   'company_name',
                   'phone_no',
@@ -35,7 +38,8 @@ class recruiter_tableSerializer(serializers.ModelSerializer):
 class jobpost_tableSerializer(serializers.ModelSerializer):
     class Meta:
         model = jobpost_table
-        fields = ('company_name',
+        fields = ('jobpost_id',
+                  'company_name',
                   'recruiter_name',
                   'job_position',
                   'job_description')

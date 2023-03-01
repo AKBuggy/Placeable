@@ -40,11 +40,15 @@ export class login implements OnInit{
     this.service.login(val).subscribe(res=>{
       this.response = res;
       console.log(this.response)
-      if(this.response === "Less go"){
-        this.router.navigate(['/home']);
+      if(this.response === "Student"){
+        this.router.navigate(['/studentHome']);
+      } else if(this.response === "Recruiter"){
+        this.router.navigate(['/recruiterHome']);
+      } else if(this.response === "PO"){
+        this.router.navigate(['/placementOfficerHome']);
       } else{
         alert(res.toString());
-      }   
+      }
     });
   }
 }
