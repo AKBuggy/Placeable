@@ -46,4 +46,13 @@ readonly APIUrl = "http://127.0.0.1:8000";
   deleteStudent(val:any){
     return this.http.delete(this.APIUrl + '/studentHome/details',val);
   }
+
+  addComment(val:any){
+    return this.http.post(this.APIUrl + '/addComment/', val);
+  }
+
+  getComments(val:any){
+    return this.http.post(this.APIUrl + '/GetComments/', val);
+  }
+
 }

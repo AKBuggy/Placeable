@@ -8,6 +8,7 @@ import { StudentRegistrationComponent } from './student-registration/student-reg
 import { PlacementofficerPageComponent } from './placementofficer-page/placementofficer-page.component';
 import { RecruiterPageComponent } from './recruiter-page/recruiter-page.component';
 import { ShowStudentsComponent } from './student-page/show-students/show-students.component';
+import { StudentCompanyComponent } from './student-company/student-company.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'studentHome', component: StudentPageComponent},
   { path: 'studentHome/details', component: ShowStudentsComponent},
   { path: 'placementOfficerHome', component: PlacementofficerPageComponent},
-  { path: 'recruiterHome', component: RecruiterPageComponent}
+  { path: 'recruiterHome', component: RecruiterPageComponent},
+  { path: 'studentCompany', component: StudentCompanyComponent}
 ];
 
 @NgModule({

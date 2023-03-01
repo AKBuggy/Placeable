@@ -40,3 +40,10 @@ class jobpost_table(models.Model):
     recruiter_name = models.CharField(max_length=40)
     job_position = models.CharField(max_length=30)
     job_description = models.TextField()
+
+# Model for Comments Table
+class comment_table(models.Model):
+    comment_id = models.AutoField(primary_key=True)
+    user_email = models.CharField(max_length=40)
+    comment = models.TextField()
+    jobpost_id = models.ForeignKey(jobpost_table, null=False, on_delete=models.CASCADE)

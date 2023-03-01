@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
 
 @Component({
@@ -8,15 +9,13 @@ import { SharedService } from '../shared.service';
 })
 export class StudentPageComponent implements OnInit{
 
-  constructor(private sharedService: SharedService) { }
+  constructor(private sharedService: SharedService, private router: Router) { }
 
   JobPosts:any=[]
-  JobPost:any
-  company_name:string=""
-  job_position:string=""
-  job_description:string=""
-  TableSection:boolean=false
-  JobPostSection:boolean=true
+  jobpost_id:string=""
+
+  @Input()
+  comment:string=""
 
   ngOnInit(): void {
     this.refreshJobPosts();
@@ -29,18 +28,12 @@ export class StudentPageComponent implements OnInit{
   }
 
   viewClick(item: any){
-    this.TableSection=true
-    this.JobPostSection=false
-    this.JobPost=item
-    this.company_name=item.company_name;
-    this.job_position=item.job_position;
-    this.job_description=item.job_description;
-    console.log(this.JobPost);
-  }
-
-  backClick(){
-    this.TableSection=false
-    this.JobPostSection=true
+    sessionStorage.setItem('job', JSON.stringify(item));
+    sessionStorage.setItem('company_name', item.company_name);
+    sessionStorage.setItem('job_position', item.job_position);
+    sessionStorage.setItem('job_description', item.job_description);
+    sessionStorage.setItem('job_post_id', JSON.stringify(item.jobpost_id));
+    this.router.navigate(['/studentCompany']);
   }
 
 }

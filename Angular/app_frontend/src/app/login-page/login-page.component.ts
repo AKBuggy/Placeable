@@ -13,7 +13,7 @@ export class login implements OnInit{
   constructor(private service:SharedService, private router: Router) {}
 
   response: any = "";
-
+  sessionData: any;
 
   @Input() login:any;
   email: string = "";
@@ -36,6 +36,7 @@ export class login implements OnInit{
       password:this.password,
       optradio:this.optradio
     };
+    sessionStorage.setItem('user',JSON.stringify(val.email));
     console.log(val)
     this.service.login(val).subscribe(res=>{
       this.response = res;

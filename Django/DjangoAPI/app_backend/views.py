@@ -3,8 +3,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 
-from app_backend.models import student_table,placement_officer_table,recuiter_table, jobpost_table
-from app_backend.serializers import student_tableSerializer, placement_officer_tableSerializer, recruiter_tableSerializer, jobpost_tableSerializer
+from app_backend.models import student_table,placement_officer_table,recuiter_table, jobpost_table, comment_table
+from app_backend.serializers import student_tableSerializer, placement_officer_tableSerializer, recruiter_tableSerializer, jobpost_tableSerializer, comment_tableSerializer
 
 
 # Create your views here.
@@ -139,3 +139,22 @@ def recruiterAPI(request, id=0):
         recruiter=recuiter_table.objects.get(recruiter_id=id[0])
         recruiter.delete()
         return JsonResponse("Deleted Succeffully!!", safe=False)
+@csrf_exempt
+def addCommentAPI(request):
+    if request.method == 'POST':
+        comment_data=JSONParser().parse(request)
+        print(comment_data)
+        comment_serializer = comment_tableSerializer(data=comment_data)
+        if comment_serializer.is_valid():
+            comment_serializer.save()
+            return JsonResponse("Uploaded Successfully!!" , safe=False)
+        return JsonResponse("Failed to Upload.",safe=False)
+
+@csrf_exempt
+def getCommentsAPI(request):
+    if request.method == 'POST':
+        jobpost_id = JSONParser().parse(request)
+        print(jobpost_id)
+        jobPost = comment_table.objects.raw('SELECT * FROM app_backend_comment_table WHERE jobpost_id_id = %s', [jobpost_id])
+        job_post_serializer = comment_tableSerializer(jobPost, many=True)
+        return JsonResponse(job_post_serializer.data, safe=False)

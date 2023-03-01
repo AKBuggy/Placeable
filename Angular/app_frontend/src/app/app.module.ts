@@ -16,10 +16,14 @@ import { PlacementofficerPageComponent } from './placementofficer-page/placement
 import { RecruiterPageComponent } from './recruiter-page/recruiter-page.component';
 import { TextareaAutoresizeDirective } from './textarea-autoresize.directive';
 import { AngularEditorModule} from '@kolkov/angular-editor';
+<<<<<<< HEAD
 import { ShowRecruitersComponent } from './placementofficer-page/show-recruiters/show-recruiters.component';
 import { AddEditRecruiterComponent } from './placementofficer-page/add-edit-recruiter/add-edit-recruiter.component';
 import { ShowStudentsComponent } from './student-page/show-students/show-students.component';
 import { DeleteStudentsComponent } from './student-page/delete-students/delete-students.component';
+=======
+import { StudentCompanyComponent } from './student-company/student-company.component'
+>>>>>>> ab9a92a (Comment-Section)
 
 @NgModule({
   
@@ -38,6 +42,7 @@ import { DeleteStudentsComponent } from './student-page/delete-students/delete-s
     ShowStudentsComponent,
     DeleteStudentsComponent,
     
+    StudentCompanyComponent,
   ],
   imports: [
     BrowserModule,

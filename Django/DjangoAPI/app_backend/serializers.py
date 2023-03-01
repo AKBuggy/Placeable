@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from app_backend.models import student_table, placement_officer_table, recuiter_table, jobpost_table
+from app_backend.models import student_table, placement_officer_table, recuiter_table, jobpost_table, comment_table
 
 class student_tableSerializer(serializers.ModelSerializer):
     class Meta:
@@ -43,3 +43,11 @@ class jobpost_tableSerializer(serializers.ModelSerializer):
                   'recruiter_name',
                   'job_position',
                   'job_description')
+
+class comment_tableSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = comment_table
+        fields = ('comment_id',
+                  'user_email',
+                  'comment',
+                  'jobpost_id')
