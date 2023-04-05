@@ -13,10 +13,10 @@
     <div class="box">
       <div class="inner-box">
         <div class="form-wrap">
-          <form action="student-registration.component.html" class="studentSign-in-form">
+          <form action="student-registration.component.html" class="studentSign-in-form" [formGroup]="reactiveForm" #form="ngForm">
             <!--Add logo here-->
             <div class="logo">
-              <img src="./assets/img/placeable.png" alt="">
+              <img src="./assets/img/placeable.png" alt="logo of placeable website">
               <h3>laceable</h3>
             </div>
             <div class="heading">
@@ -27,25 +27,90 @@
             <div class="actual-form">
               <!--Username-->
               <div class="input-wrap">
-                <input type="text" minlength="4" class="input-field" name="fname" autocomplete="off" placeholder="First Name" [(ngModel)] = "fname" required>
+                <input type="text" minlength="4" class="input-field" name="fname" autocomplete="off" placeholder="First Name" [(ngModel)] = "fname" formControlName="name" required minlength="2" maxlength="250" [class.is-invalid]="first_name.invalid && (first_name.dirty || first_name.touched)" onkeydown="return /[a-z]/i.test(event.key)">
                 <label for="First Name" hidden>First Name</label>
+                <br>
+                <div *ngIf="first_name.invalid && (first_name.dirty || first_name.touched)" class="invalid-feedback">
+                  <div *ngIf="first_name.errors?.['required']">
+                    This field is required.
+                  </div>
+                  <div *ngIf="first_name.errors?.['minlength']">
+                    This field must have at least 2 character.
+                  </div>
+                  <div *ngIf="first_name.errors?.['maxlength']">
+                    This field must have at most 250 characters.
+                  </div>
+                </div>
+                <br>
               </div>
               <!--Last Name-->
               <div class="input-wrap">
-                <input type="text" minlength="4" class="input-field" name="lname" autocomplete="off" placeholder="Last Name" [(ngModel)] = "lname"required>
+                <input type="text" class="input-field" name="lname" autocomplete="off" placeholder="Last Name" [(ngModel)] = "lname" formControlName="lname" required minlength="1" maxlength="250" [class.is-invalid]="last_name.invalid && (last_name.dirty || last_name.touched)" onkeydown="return /[a-z]/i.test(event.key)">
                 <label for="Last Name" hidden>Last Name</label>
+                <br>
+                <div *ngIf="last_name.invalid && (last_name.dirty || last_name.touched)" class="invalid-feedback">
+                  <div *ngIf="last_name.errors?.['required']">
+                    This field is required.
+                  </div>
+                  <div *ngIf="last_name.errors?.['minlength']">
+                    This field must have at least 1 character.
+                  </div>
+                  <div *ngIf="last_name.errors?.['maxlength']">
+                    This field must have at most 250 characters.
+                  </div>
+                </div>
               </div>
+              <!--Phone Number-->
               <div class="input-wrap">
-                <input type="text" minlength="4" class="input-field" name="phone_no" autocomplete="off" placeholder="Phone Number" [(ngModel)] = "phone_no" required>
+                <input type="text" class="input-field" name="phone_no" autocomplete="off" placeholder="Phone Number" [(ngModel)] = "phone_no" formControlName="phone_no" formControlName="phone_no" required minlength="10" maxlength="10" [class.is-invalid]="getPhone_no.invalid && (getPhone_no.dirty || getPhone_no.touched)">
                 <label hidden>Phone Number</label>
+                <br>
+                <div *ngIf="getPhone_no.invalid && (getPhone_no.dirty || getPhone_no.touched)" class="invalid-feedback">
+                  <div *ngIf="getPhone_no.errors?.['required']">
+                    This field is required.
+                  </div>
+                  <div *ngIf="getPhone_no.errors?.['minlength']">
+                    This field must have 10 digits
+                  </div>
+                </div>
               </div>
               <div class="input-wrap">
-                <input type="email" minlength="4" class="input-field" name="email" autocomplete="off" placeholder="Email" [(ngModel)] = "email" required>
+                <input type="email" class="input-field" name="email" autocomplete="off" placeholder="Email" [(ngModel)] = "email" required title="example: john.christopher@xaviers.edu.in" formControlName="email" required minlength="1" maxlength="250" [class.is-invalid]="getEmail.invalid && (getEmail.dirty || getEmail.touched)">
                 <label hidden>Email</label>
+                <br>
+                <div *ngIf="getEmail.invalid && (getEmail.dirty || getEmail.touched)" class="invalid-feedback">
+                  <div *ngIf="getEmail.errors?.['required']">
+                    This field is required.
+                  </div>
+                  <div *ngIf="getEmail.errors?.['minlength']">
+                    This field must have at least 1 character.
+                  </div>
+                  <div *ngIf="getEmail.errors?.['maxlength']">
+                    This field must have at most 250 characters.
+                  </div>
+                  <div *ngIf="!getEmail.errors?.['required'] && !getEmail.errors?.['minlength'] && !getEmail.errors?.['maxlength'] && getEmail.errors?.['emailValidator']">
+                    Invalid email format (hover to check format)
+                  </div>
+                </div>
               </div>
               <div class="input-wrap">
-                <input type="password" minlength="4" class="input-field" name="password" autocomplete="off" placeholder="Password" [(ngModel)] = "password" required>
+                <input type="password" minlength="4" class="input-field" name="password" autocomplete="off" placeholder="Password" [(ngModel)] = "password" formControlName="password" required minlength="8" maxlength="50" [class.is-invalid]="getPassword.invalid && (getPassword.dirty || getPassword.touched)">
                 <label hidden>Password</label>
+                <br>
+                <div *ngIf="getPassword.invalid && (getPassword.dirty || getPassword.touched)" class="invalid-feedback">
+                  <div *ngIf="getPassword.errors?.['required']">
+                    This field is required.
+                  </div>
+                  <div *ngIf="getPassword.errors?.['minlength']">
+                    This field must have at least 8 character.
+                  </div>
+                  <div *ngIf="getPassword.errors?.['maxlength']">
+                    This field must have at most 50 characters.
+                  </div>
+                  <div *ngIf="!getPassword.errors?.['required'] && !getPassword.errors?.['minlength'] && !getPassword.errors?.['maxlength'] && getPassword.errors?.['emailValidator']">
+                    Invalid email format.
+                  </div>
+                </div>
               </div>
               <!--Submit-->
               <button type="button" class="sign-btn" (click)="onClick()">Sign Up</button>

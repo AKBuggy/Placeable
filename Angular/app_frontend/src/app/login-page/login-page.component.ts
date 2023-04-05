@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from '../shared.service';
 
@@ -21,12 +20,6 @@ export class login implements OnInit{
   optradio: string="";
  
   ngOnInit(): void {
-    // this.fname = this.Recruiter.fname
-    // this.lname = this.Recruiter.lname,
-    // this.company_name = this.Recruiter.company_name,
-    // this.phone_no = this.Recruiter.phone_no,
-    // this.email = this.Recruiter.email,
-    // this.password = this.Recruiter.password
   }
 
 

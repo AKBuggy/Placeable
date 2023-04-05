@@ -26,6 +26,7 @@
     <div class="formContainer mx-5">
         <table class="table table-striped">
             <thead>
+                <th>Id</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Phone Number</th>
@@ -34,6 +35,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let studentItem of StudentList">
+                    <td>{{studentItem.student_id}}</td>
                     <td>{{studentItem.fname}}</td>
                     <td>{{studentItem.lname}}</td>
                     <td>{{studentItem.phone_no}}</td>

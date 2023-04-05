@@ -25,7 +25,7 @@ export class ShowRecruitersComponent {
   display = "none";
   addClick(){
     this.rec={
-      recruiter_id:"",
+      recruiter_id:0,
       fname:"",
       lname:"",
       company_name:"",
@@ -45,6 +45,7 @@ export class ShowRecruitersComponent {
   }
 
   deleteClick(item:any){
+    console.log(item.recruiter_id)
     if(confirm("Are you sure?")){
       this.service.deleteRecruiter(item.recruiter_id).subscribe(data=>{
         alert(data.toString());

@@ -5,9 +5,12 @@ from django.http.response import JsonResponse
 
 from app_backend.models import student_table,placement_officer_table,recuiter_table, jobpost_table, comment_table
 from app_backend.serializers import student_tableSerializer, placement_officer_tableSerializer, recruiter_tableSerializer, jobpost_tableSerializer, comment_tableSerializer
+from rest_framework import status
 
 
 # Create your views here.
+
+#Student registration API
 @csrf_exempt
 def studentAPI(request, id=0):
     if request.method == 'POST':
@@ -26,7 +29,6 @@ def studentAPI(request, id=0):
     elif request.method=='DELETE':
         id = student_table.objects.values_list('student_id', flat=True)
         student=student_table.objects.get(student_id=id[0])
-        # student=student_table.objects.get(student_id=id)
         student.delete()
         return JsonResponse("Deleted Succeffully!!", safe=False)
 
@@ -40,6 +42,7 @@ def poAPI(request):
             return JsonResponse("Added Placement Officer Successfully!!" , safe=False)
         return JsonResponse("Failed to Add Placement Officer.",safe=False)
 
+#Login API
 @csrf_exempt
 def loginPage(request):
     if request.method == 'POST':
@@ -89,11 +92,14 @@ def loginPage(request):
                 return JsonResponse("Please Enter Correct Password(PO)", safe=False)
         else:
             return JsonResponse("Please enter all values", safe=False)
-        
+
+#JobPost API     
 @csrf_exempt
 def jobPostAPI(request):
     if request.method == 'POST':
         job_post_data=JSONParser().parse(request)
+        id = job_post_data.get('recruiter_id')
+        print(id)
         job_post_serializer = jobpost_tableSerializer(data=job_post_data)
         if job_post_serializer.is_valid():
             job_post_serializer.save()
@@ -117,7 +123,6 @@ def recruiterAPI(request, id=0):
 
     elif request.method=='POST':
         recruiter_data=JSONParser().parse(request)
-        print(recruiter_data)
         recruiter_serializer = recruiter_tableSerializer(data=recruiter_data)
         if recruiter_serializer.is_valid():
             recruiter_serializer.save()
@@ -135,10 +140,15 @@ def recruiterAPI(request, id=0):
         return JsonResponse("Failed to Update.", safe=False)
 
     elif request.method=='DELETE':
-        id = recuiter_table.objects.values_list('recruiter_id', flat=True)
-        recruiter=recuiter_table.objects.get(recruiter_id=id[0])
+        # id = recuiter_table.objects.values_list('recruiter_id', flat=True)
+        print(id)
+        # recruiter=recuiter_table.objects.get(recruiter_id=id[0])
+        recruiter=recuiter_table.objects.get(recruiter_id=id)
+        print(recruiter)
         recruiter.delete()
-        return JsonResponse("Deleted Succeffully!!", safe=False)
+        return JsonResponse("Deleted Successfully!!", safe=False)
+    
+#Add comment
 @csrf_exempt
 def addCommentAPI(request):
     if request.method == 'POST':
@@ -150,6 +160,7 @@ def addCommentAPI(request):
             return JsonResponse("Uploaded Successfully!!" , safe=False)
         return JsonResponse("Failed to Upload.",safe=False)
 
+#Get comment
 @csrf_exempt
 def getCommentsAPI(request):
     if request.method == 'POST':

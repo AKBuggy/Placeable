@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'app_backend.apps.AppBackendConfig',
     'rest_framework',
+    "verify_email.apps.VerifyEmailConfig",
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True 
@@ -84,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'FYPDB',
         'USER': 'postgres',
-        'PASSWORD': 'Yojit@17',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '5432'
     }
@@ -110,6 +112,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_ID') 
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PW')
+
+DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
