@@ -17,13 +17,48 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav ml-auto" *ngIf="user_type==student_type; else elseIfBlock">
             <li class="nav-item">
-              <a class="nav-link" href="#" style="font-size: 20px;">Logout</a>
+              <a class="button m-1 btn btn-light btn-outline-dark" href="/home">Logout</a>
             </li>
           </ul>
+          <ng-template #elseIfBlock>
+            <ul class="navbar-nav ml-auto" *ngIf="user_type==placement_type; else elseBlock">
+              <li class="nav-item">
+                <a class="button m-1 btn btn-light btn-outline-dark" href="/studentHome/details">Student</a>
+              </li>
+              <li class="nav-item">
+                <a class="button m-1 btn btn-light btn-outline-dark" href="/studentHome">Job Posts</a>
+              </li>
+              <li class="nav-item active">
+                <a class="button m-1 btn btn-light btn-outline-dark" href="/placementOfficerHome">Recruiters</a>
+              </li>
+              <li class="nav-item">
+                <a class="m-1 btn btn-light btn-outline-dark" href="/home">Logout</a>
+              </li>
+            </ul>
+          </ng-template>
+          <ng-template #elseBlock>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="button m-1 btn btn-light btn-outline-dark" href="/recruiterHome">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="button m-1 btn btn-light btn-outline-dark" href="/recruiterPosts">My Posts</a>
+              </li>
+              <li class="nav-item">
+                <a class="button m-1 btn btn-light btn-outline-dark" href="/home">Logout</a>
+              </li>
+            </ul>
+          </ng-template>
         </div>
       </nav>
+
+      <div class="outerContainer p-5 mx-5">
+        <div class="form-outline mb-4 mx-5">
+            <input type="search" class="form-control" id="datatable-search-input" placeholder="Search" [(ngModel)]="searchText">
+            <label class="form-label" for="datatable-search-input" hidden>Search</label>
+        </div>
 
       <div class="container my-5">
         <table class="table table-striped">
@@ -36,7 +71,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let JobPost of JobPosts">
+            <tr *ngFor="let JobPost of JobPosts | filter:searchText">
               <td>{{JobPost.company_name}}</td>
               <td>{{JobPost.job_position}}</td>
               <td>{{JobPost.recruiter_name}}</td>
@@ -47,6 +82,7 @@
           </tbody>
         </table>
       </div>
+    </div>
       
       
 

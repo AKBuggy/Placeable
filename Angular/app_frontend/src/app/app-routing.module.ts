@@ -9,6 +9,7 @@ import { PlacementofficerPageComponent } from './placementofficer-page/placement
 import { RecruiterPageComponent } from './recruiter-page/recruiter-page.component';
 import { ShowStudentsComponent } from './student-page/show-students/show-students.component';
 import { StudentCompanyComponent } from './student-company/student-company.component';
+import { RecruiterPostsComponent } from './recruiter-posts/recruiter-posts.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'studentHome/details', component: ShowStudentsComponent},
   { path: 'placementOfficerHome', component: PlacementofficerPageComponent},
   { path: 'recruiterHome', component: RecruiterPageComponent},
-  { path: 'studentCompany', component: StudentCompanyComponent}
+  { path: 'studentCompany', component: StudentCompanyComponent},
+  { path: 'recruiterPosts', component: RecruiterPostsComponent}
 ];
 
 @NgModule({

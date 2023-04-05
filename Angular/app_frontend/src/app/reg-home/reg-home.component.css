@@ -1,17 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Roboto:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
 
 .sign_in{
     /* position: absolute;
     right: 0;
     top: 260;
     width: 150px; */
-    color: rgb(66, 122, 217);
+    color: #192837;
     font-size: 150%;
 }
 
 .sign_in:hover{
-    color: #ED3F3F;
+    color: rgb(66, 122, 217);
 }
 
 .about_us_title{
@@ -39,5 +40,6 @@
     place-items: center;
     align-content: center;
     min-height: 100vh;
-    color: #ED3F3F;
+    color: #192837;
+    font-family:  "Poppins", sans-serif;
 }

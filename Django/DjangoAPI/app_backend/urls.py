@@ -17,4 +17,9 @@ urlpatterns=[
     re_path('studentHome/details', views.studentAPI),
     re_path('addComment/', views.addCommentAPI),
     re_path('GetComments/', views.getCommentsAPI),
+    re_path('deleteComment/', views.deleteCommentAPI),
+    re_path('MyJobPosts/', views.viewMyJobPostsAPI),
+    re_path('deleteRecruiter/', views.deleteRecruiterAPI),
+    re_path('deleteStudent/', views.deleteStudentAPI),
+    re_path('DeleteJobPosts/', views.deleteJobPostAPI)
 ] 

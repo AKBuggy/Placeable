@@ -42,7 +42,8 @@ class jobpost_tableSerializer(serializers.ModelSerializer):
                   'company_name',
                   'recruiter_name',
                   'job_position',
-                  'job_description')
+                  'job_description',
+                  'email')
 
 class comment_tableSerializer(serializers.ModelSerializer):
     class Meta:

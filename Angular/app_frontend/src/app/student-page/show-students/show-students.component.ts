@@ -11,13 +11,19 @@ export class ShowStudentsComponent {
   constructor(private service:SharedService){}
   stud:any;
   StudentList:any=[];
+
+  public searchText!: any['fname'];
+  
   ngOnInit():void{
     this.refreshStudentList();
   }
   
   deleteClick(item:any){
+    var val = {
+      email: item.email
+    };
     if(confirm("Are you sure?")){
-      this.service.deleteStudent(item.student_id).subscribe(data=>{
+      this.service.deleteStudent(val).subscribe(data=>{
         console.log(data)
         alert(data.toString());
         this.refreshStudentList();

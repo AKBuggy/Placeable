@@ -16,6 +16,7 @@ export class RecruiterPageComponent {
   recruiter_name: string = "";
   job_position: string = "";
   job_description: string = "";
+  email:string=""
  
   ngOnInit(): void {}
 
@@ -24,7 +25,8 @@ export class RecruiterPageComponent {
       company_name:this.company_name,
       recruiter_name:this.recruiter_name,
       job_position:this.job_position,
-      job_description:this.job_description
+      job_description:this.job_description,
+      email:sessionStorage.getItem('user')
     };
     console.log(val)
     this.service.addJobPost(val).subscribe(res=>{

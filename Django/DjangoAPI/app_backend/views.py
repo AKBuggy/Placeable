@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
+from django.db import connection
 
 from app_backend.models import student_table,placement_officer_table,recuiter_table, jobpost_table, comment_table
 from app_backend.serializers import student_tableSerializer, placement_officer_tableSerializer, recruiter_tableSerializer, jobpost_tableSerializer, comment_tableSerializer
@@ -25,11 +26,15 @@ def studentAPI(request, id=0):
         student = student_table.objects.all()
         students_serializer = student_tableSerializer(student, many=True)
         return JsonResponse(students_serializer.data, safe=False)
-    
-    elif request.method=='DELETE':
-        id = student_table.objects.values_list('student_id', flat=True)
-        student=student_table.objects.get(student_id=id[0])
-        student.delete()
+
+@csrf_exempt
+def deleteStudentAPI(request):
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        email = data.get('email')
+        cursor = connection.cursor()
+        cursor.execute('DELETE FROM app_backend_student_table WHERE email = %s', [email])
+        cursor.execute('DELETE FROM app_backend_comment_table WHERE user_email = %s', [email])
         return JsonResponse("Deleted Succeffully!!", safe=False)
 
 @csrf_exempt
@@ -50,7 +55,6 @@ def loginPage(request):
         email = login_data.get('email')
         passw = login_data.get('password')
         optradio = login_data.get('optradio')
-        print("this is optradio",optradio)
         
         dbPass = None
         if optradio == "Student":
@@ -113,7 +117,6 @@ def viewAllJobPostsAPI(request):
         job_post_serializer = jobpost_tableSerializer(jobPost, many=True)
         return JsonResponse(job_post_serializer.data, safe=False)
 
-
 @csrf_exempt
 def recruiterAPI(request, id=0):
     if request.method=='GET':
@@ -133,27 +136,25 @@ def recruiterAPI(request, id=0):
         recruiter_data = JSONParser().parse(request)
         recruiter = recuiter_table.objects.get(recruiter_id=recruiter_data['recruiter_id'])
         recruiter_serializer=recruiter_tableSerializer(recruiter, data=recruiter_data)
-        print(recruiter_serializer)
         if recruiter_serializer.is_valid():
             recruiter_serializer.save()
             return JsonResponse("Updated Successfully!!", safe=False)
         return JsonResponse("Failed to Update.", safe=False)
 
-    elif request.method=='DELETE':
-        # id = recuiter_table.objects.values_list('recruiter_id', flat=True)
-        print(id)
-        # recruiter=recuiter_table.objects.get(recruiter_id=id[0])
-        recruiter=recuiter_table.objects.get(recruiter_id=id)
-        print(recruiter)
-        recruiter.delete()
-        return JsonResponse("Deleted Successfully!!", safe=False)
-    
-#Add comment
+@csrf_exempt
+def deleteRecruiterAPI(request):
+    if request.method == 'POST':
+        data = JSONParser().parse(request)
+        email = data.get('email')
+        cursor = connection.cursor()
+        cursor.execute('DELETE FROM app_backend_recuiter_table WHERE email = %s', [email])
+        cursor.execute('DELETE FROM app_backend_jobpost_table WHERE email = %s', [email])
+        return JsonResponse("Deleted Succeffully!!", safe=False)
+
 @csrf_exempt
 def addCommentAPI(request):
     if request.method == 'POST':
         comment_data=JSONParser().parse(request)
-        print(comment_data)
         comment_serializer = comment_tableSerializer(data=comment_data)
         if comment_serializer.is_valid():
             comment_serializer.save()
@@ -165,7 +166,31 @@ def addCommentAPI(request):
 def getCommentsAPI(request):
     if request.method == 'POST':
         jobpost_id = JSONParser().parse(request)
-        print(jobpost_id)
         jobPost = comment_table.objects.raw('SELECT * FROM app_backend_comment_table WHERE jobpost_id_id = %s', [jobpost_id])
         job_post_serializer = comment_tableSerializer(jobPost, many=True)
         return JsonResponse(job_post_serializer.data, safe=False)
+
+@csrf_exempt
+def deleteCommentAPI(request):
+    if request.method == 'POST':
+        c_id = JSONParser().parse(request)
+        cursor = connection.cursor()
+        cursor.execute('DELETE FROM app_backend_comment_table WHERE comment_id = %s', [c_id])
+        return JsonResponse("Deleted Succeffully!!", safe=False)
+
+@csrf_exempt
+def viewMyJobPostsAPI(request):
+    if request.method == 'POST':
+        json_data = JSONParser().parse(request)
+        email = json_data.get('recruiter_email')
+        jobPost = jobpost_table.objects.raw('SELECT * FROM app_backend_jobpost_table WHERE email = %s', [email])
+        job_post_serializer = jobpost_tableSerializer(jobPost, many=True)
+        return JsonResponse(job_post_serializer.data, safe=False)
+
+@csrf_exempt
+def deleteJobPostAPI(request):
+    if request.method == 'POST':
+        jobpost_id = JSONParser().parse(request)
+        cursor = connection.cursor()
+        cursor.execute('DELETE FROM app_backend_jobpost_table WHERE jobpost_id = %s', [jobpost_id])
+        return JsonResponse("Deleted Succeffully!!", safe=False)

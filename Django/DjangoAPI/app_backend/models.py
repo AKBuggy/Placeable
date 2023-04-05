@@ -40,6 +40,7 @@ class jobpost_table(models.Model):
     recruiter_name = models.CharField(max_length=40)
     job_position = models.CharField(max_length=30)
     job_description = models.TextField()
+    email = models.CharField(max_length=40,null=True)
 
 # Model for Comments Table
 class comment_table(models.Model):
