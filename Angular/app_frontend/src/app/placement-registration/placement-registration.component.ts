@@ -25,7 +25,6 @@ export class PlacementRegistrationComponent {
   constructor(private service:SharedService, private router: Router) {
     this.user = {} as IUser;
   }
-
   response: any = "";
 
   @Input() Student:any;
@@ -86,6 +85,14 @@ export class PlacementRegistrationComponent {
   }
 
   onClick(){
+    if (this.reactiveForm.invalid) {
+      for (const control of Object.keys(this.reactiveForm.controls)) {
+        this.reactiveForm.controls[control].markAsTouched();
+      }
+      return;
+    }
+
+  
     var val = {
       fname:this.fname,
       lname:this.lname,

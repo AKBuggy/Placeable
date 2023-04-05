@@ -89,6 +89,13 @@ export class StudentRegistrationComponent {
   
  
   onClick(){
+    if (this.reactiveForm.invalid) {
+      for (const control of Object.keys(this.reactiveForm.controls)) {
+        this.reactiveForm.controls[control].markAsTouched();
+      }
+      return;
+    }
+    
     var val = {
       fname:this.fname,
       lname:this.lname,
