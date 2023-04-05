@@ -13,7 +13,11 @@ export class ShowRecruitersComponent {
   constructor(private service:SharedService){}
 
   RecruiterList:any=[];
+  email: string = "";
+  recruiter_id: string = "";
 
+  public searchText!: any['company_name'];
+  
   ngOnInit():void{
     this.refreshRecruiterList();
   }
@@ -40,13 +44,16 @@ export class ShowRecruitersComponent {
 
   editClick(item:any){
     this.rec = item;
-    this.ModalTitle="Edit Department";
+    this.ModalTitle="Edit Recruiter";
     this.ActivateAddEditRecComp=true;
   }
 
-  deleteClick(item:any){
+  deleteClick(recruiterItem:any){
+    var val = {
+      email: recruiterItem.email
+    };
     if(confirm("Are you sure?")){
-      this.service.deleteRecruiter(item.recruiter_id).subscribe(data=>{
+      this.service.deleteRecruiter(val).subscribe(data=>{
         alert(data.toString());
         this.refreshRecruiterList();
       })
@@ -54,7 +61,6 @@ export class ShowRecruitersComponent {
   }
 
   closeClick(){
-    
     this.ActivateAddEditRecComp=false;
     this.refreshRecruiterList();
     this.display = "none";

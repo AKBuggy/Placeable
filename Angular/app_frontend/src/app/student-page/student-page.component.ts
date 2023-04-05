@@ -13,11 +13,17 @@ export class StudentPageComponent implements OnInit{
 
   JobPosts:any=[]
   jobpost_id:string=""
+  user_type:any
+  student_type:string="Student"
+  placement_type:string="PO"
 
   @Input()
   comment:string=""
 
+  public searchText!: any['company_name'];
+
   ngOnInit(): void {
+    this.user_type = sessionStorage.getItem('user-type')
     this.refreshJobPosts();
   }
 

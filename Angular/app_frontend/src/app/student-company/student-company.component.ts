@@ -20,17 +20,21 @@ export class StudentCompanyComponent {
   user_email:string=""
   response:any=""
   Comments:any=[]
+  user_type:any
+  student_type:string="Student"
+  placement_type:string="PO"
+  comment_id:string=""
 
   @Input()
   comment:string=""
 
   ngOnInit(): void {
+    this.user_type = sessionStorage.getItem('user-type')
     this.company_name = sessionStorage.getItem('company_name')
     this.job_position = sessionStorage.getItem('job_position')
     this.job_description = sessionStorage.getItem('job_description')
     this.job_post_id = sessionStorage.getItem('job_post_id')
     this.userData = sessionStorage.getItem('user');
-    this.user_email = JSON.parse(this.userData);
 
     this.refreshComments(this.job_post_id)
   }
@@ -38,15 +42,11 @@ export class StudentCompanyComponent {
 
   onClick(){
     this.userData = sessionStorage.getItem('user');
-    this.user_email = JSON.parse(this.userData);
-    console.log(this.user_email)
-
     this.jobData = sessionStorage.getItem('job_post_id');
     this.job_post_id = JSON.parse(this.jobData);
-    console.log(this.job_post_id)
 
     var val = {
-      user_email:this.user_email,
+      user_email:this.userData,
       comment:this.comment,
       jobpost_id:this.job_post_id
     }
@@ -54,13 +54,18 @@ export class StudentCompanyComponent {
     this.sharedService.addComment(val).subscribe(data=>{
       this.response=data;
       console.log(val);
-    })
+    });
 
     this.ngOnInit()
   }
 
   backClick(){
-    this.router.navigate(['/studentHome'])
+    if(this.user_type=="Recruiter"){
+      this.router.navigate(['/recruiterPosts'])
+    }
+    else{
+      this.router.navigate(['/studentHome'])
+    }
   }
 
   refreshComments(job_post_id:any){
@@ -70,7 +75,18 @@ export class StudentCompanyComponent {
   }
 
   deleteComment(Comment:any){
+    this.comment_id = Comment.comment_id
+    console.log(this.comment_id)
+    if(confirm("Are you sure?")){
+      this.sharedService.deleteComment(this.comment_id).subscribe(data=>{
+        alert(data.toString());
+      });
+    }
+    this.refreshComments(this.job_post_id);
+  }
 
+  logout(){
+    this.router.navigate(['home']);
   }
 
 }

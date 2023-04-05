@@ -17,11 +17,40 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav ml-auto" *ngIf="user_type==student_type; else elseIfBlock">
             <li class="nav-item">
-              <a class="nav-link" href="#" style="font-size: 20px;">Logout</a>
+              <a class="button m-1 btn btn-light btn-outline-dark" href="/home">Logout</a>
             </li>
           </ul>
+          <ng-template #elseIfBlock>
+            <ul class="navbar-nav ml-auto" *ngIf="user_type==placement_type; else elseBlock">
+              <li class="nav-item">
+                <a class="button m-1 btn btn-light btn-outline-dark" href="/studentHome/details">Student</a>
+              </li>
+              <li class="nav-item">
+                <a class="button m-1 btn btn-light btn-outline-dark" href="/studentHome">Job Posts</a>
+              </li>
+              <li class="nav-item active">
+                <a class="button m-1 btn btn-light btn-outline-dark" href="/placementOfficerHome">Recruiters</a>
+              </li>
+              <li class="nav-item">
+                <a class="m-1 btn btn-light btn-outline-dark" href="/home">Logout</a>
+              </li>
+            </ul>
+          </ng-template>
+          <ng-template #elseBlock>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="button m-1 btn btn-light btn-outline-dark" href="/recruiterHome">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="button m-1 btn btn-light btn-outline-dark" href="/recruiterPosts">My Posts</a>
+              </li>
+              <li class="nav-item">
+                <a class="button m-1 btn btn-light btn-outline-dark" href="/home">Logout</a>
+              </li>
+            </ul>
+          </ng-template>
         </div>
       </nav>
 
@@ -42,9 +71,9 @@
             </div>
           </div>
 
-          <div class="card-footer text-end py-4 px-5 bg-light border-0">
+          <div class="card-footer text-end py-4 px-5 bg-light border-0" style="height: 190px;">
             <div class="comment-div" style="position: relative; height: 35px;">
-              <textarea class="t-area" style="position: absolute; left:0;" placeholder="Comment" name="comment" id="comment" [(ngModel)] = "comment" required></textarea>
+              <textarea class="form-control" style="position: relative;" placeholder="Comment" name="comment" id="comment" rows="3" [(ngModel)] = "comment" required></textarea><br>
               <button type="submit" style="position: absolute; right:0;" class="btn btn-dark btn-rounded" (click)="onClick()">
                 Send
               </button>
@@ -56,10 +85,10 @@
           <div class="card-body px-5">
             <div class="row gx-xl-5">
               <div class="col-md-8" *ngFor="let Comment of Comments">
-                <div class="if-condition" *ngIf="Comment.user_email==user_email; else elseBlock"> 
+                <div class="if-condition" *ngIf="Comment.user_email==userData; else elseBlock"> 
                 <b>{{Comment.user_email}}</b><br>
                    {{Comment.comment}}<br>
-                   <a href="studentCompany" (click)="deleteComment(Comment)" style="color: red;">Delete</a><br><br>
+                   <a (click)="deleteComment(Comment)" href="studentCompany" style="color: red;">Delete</a><br><br>
                 </div>
                 <ng-template #elseBlock>
                 <b>{{Comment.user_email}}</b><br>

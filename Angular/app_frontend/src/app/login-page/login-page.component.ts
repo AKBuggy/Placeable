@@ -36,7 +36,8 @@ export class login implements OnInit{
       password:this.password,
       optradio:this.optradio
     };
-    sessionStorage.setItem('user',JSON.stringify(val.email));
+    sessionStorage.setItem('user',val.email);
+    sessionStorage.setItem('user-type', val.optradio);
     console.log(val)
     this.service.login(val).subscribe(res=>{
       this.response = res;

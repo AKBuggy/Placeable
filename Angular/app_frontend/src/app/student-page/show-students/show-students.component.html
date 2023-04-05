@@ -5,11 +5,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav ml-auto">
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#" style="font-size: 20px;">Profile</a>
-        </li> -->
         <li class="nav-item">
-          <a class="nav-link" href="#" style="font-size: 20px;">Logout</a>
+          <a class="button m-1 btn btn-light btn-outline-dark" href="/studentHome/details">Student</a>
+        </li>
+        <li class="nav-item">
+          <a class="button m-1 btn btn-light btn-outline-dark" href="/studentHome">Job Posts</a>
+        </li>
+        <li class="nav-item active">
+          <a class="button m-1 btn btn-light btn-outline-dark" href="/placementOfficerHome">Recruiters</a>
+        </li>
+        <li class="nav-item">
+          <a class="button m-1 btn btn-light btn-outline-dark" href="/home">Logout</a>
         </li>
       </ul>
     </div>
@@ -18,7 +24,7 @@
   <div class="outerContainer p-5 mx-5">
 
     <div class="form-outline mb-4 mx-5">
-        <input type="search" class="form-control" id="datatable-search-input" placeholder="Search">
+        <input type="search" class="form-control" id="datatable-search-input" placeholder="Search" [(ngModel)]="searchText">
         <label class="form-label" for="datatable-search-input" hidden>Search</label>
       </div>
       <div id="datatable">
@@ -30,15 +36,14 @@
                 <th>Last Name</th>
                 <th>Phone Number</th>
                 <th>Email</th>
-                <th>Password</th>
+                <th></th>
             </thead>
             <tbody>
-                <tr *ngFor="let studentItem of StudentList">
+                <tr *ngFor="let studentItem of StudentList | filter:searchText">
                     <td>{{studentItem.fname}}</td>
                     <td>{{studentItem.lname}}</td>
                     <td>{{studentItem.phone_no}}</td>
                     <td>{{studentItem.email}}</td>
-                    <td>{{studentItem.password}}</td>
                     <td>
                         <button type="button" class="btn btn-light mr-1" (click)="deleteClick(studentItem)">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">

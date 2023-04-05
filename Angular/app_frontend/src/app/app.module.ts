@@ -20,7 +20,9 @@ import { ShowRecruitersComponent } from './placementofficer-page/show-recruiters
 import { AddEditRecruiterComponent } from './placementofficer-page/add-edit-recruiter/add-edit-recruiter.component';
 import { ShowStudentsComponent } from './student-page/show-students/show-students.component';
 import { DeleteStudentsComponent } from './student-page/delete-students/delete-students.component';
-import { StudentCompanyComponent } from './student-company/student-company.component'
+import { StudentCompanyComponent } from './student-company/student-company.component';
+import { RecruiterPostsComponent } from './recruiter-posts/recruiter-posts.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   
@@ -38,8 +40,8 @@ import { StudentCompanyComponent } from './student-company/student-company.compo
     AddEditRecruiterComponent,
     ShowStudentsComponent,
     DeleteStudentsComponent,
-    
     StudentCompanyComponent,
+    RecruiterPostsComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { StudentCompanyComponent } from './student-company/student-company.compo
     FormsModule,
     ReactiveFormsModule,
     AngularEditorModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     SharedService
